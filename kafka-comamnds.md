@@ -1,23 +1,4 @@
-# Kafka-Docker-Setup
-
-- To Add a topic in Kafka on multple broker with partition 3 and replication 2
-- Note that : Replication Factor > Number of Brokers: This will fail if the replication factor exceeds the number of brokers in your cluster.     Ensure replication-factor <= number of brokers.
-
-```
-./kafka-topics.sh --create --topic test-topic --partitions 3 --replication-factor 2 --bootstrap-server kafka-broker-1:9094
-```
-
-- To list kafka topics
-
-```
-./kafka-topics.sh --list --bootstrap-server kafka-broker-1:9094
-```
-
-- To describe kafka topics
-
-```
-./kafka-topics.sh --list --bootstrap-server kafka-broker-1:9094
-```
+# Kafka-commands
 
 - Important kafka configuration information
 
@@ -31,17 +12,28 @@ In docker : add depends_on controller for all brokers
 In docker : mentioned volume path ( If using wsl provide proper path (/home/spirit/kafka/<server>)) provide proper perm if docker not starting
 ```
 
--
+
+- To Add a topic in Kafka on multple broker with partition 3 and replication 2
+- Note that : Replication Factor > Number of Brokers: This will fail if the replication factor exceeds the number of brokers in your cluster.     Ensure replication-factor <= number of brokers.
 
 ```
-
+./kafka-topics.sh --create --topic test-topic --partitions 3 --replication-factor 2 --bootstrap-server kafka-broker-1:9094
 ```
 
--
+
+- To list kafka topics
 
 ```
+./kafka-topics.sh --list --bootstrap-server kafka-broker-1:9094
+```
+
+
+- To describe kafka topics
 
 ```
+ ./kafka-topics.sh --describe --topic test-topic --bootstrap-server kafka-broker-1:9094
+```
+
 
 - To start consumer on a topic,
 
