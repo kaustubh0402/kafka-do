@@ -42,16 +42,23 @@ In docker : mentioned volume path ( If using wsl provide proper path (/home/spir
 ```
 
 
-- To start consumer on a topic from current time (latest flag),
+- To start consumer on a topic from current time (latest flag)
 
 ```
 ./kafka-console-consumer.sh --topic test-topic --bootstrap-server kafka-broker-1:9094
 ```
 
 
-- To start consumer on a topic from start time (earliest flag),
+- To start consumer on a topic from start time (earliest flag)
 
 ```
 ./kafka-console-consumer.sh --topic test-topic --from-beginning --bootstrap-server kafka-broker-1:9094
+```
+
+
+- To delete kafka topic
+
+```
+ ./kafka-topics.sh --delete --topic test-topic --bootstrap-server kafka-broker-1:9094
 ```
 
