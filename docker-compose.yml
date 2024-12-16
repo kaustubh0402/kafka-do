@@ -61,6 +61,27 @@ services:
     volumes:
       - /home/spirit/kafka/broker2-data
 
+ # Kafka Broker 3
+  kafka-broker-3:
+    image: apache/kafka:latest
+    container_name: kafka-broker-3
+    ports:
+      - "9096:9096"
+    environment:
+      KAFKA_NODE_ID: 4
+      KAFKA_PROCESS_ROLES: broker
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka-controller:9093
+      KAFKA_LISTENERS: BROKER://kafka-broker-3:9095
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: BROKER:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: BROKER
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LOG_DIRS: /tmp/kafka/logs
+      KAFKA_CLUSTER_ID: 5L6g3nShT-eMCtK--X86sw
+    depends_on:
+      - kafka-controller
+    volumes:
+      - /home/spirit/kafka/broker3-data
+
 # volumes:
 #   /home/spirit/kafkacontroller-data:
 #   /home/spirit/kafkabroker1-data:

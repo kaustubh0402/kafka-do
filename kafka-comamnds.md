@@ -17,7 +17,7 @@ In docker : mentioned volume path ( If using wsl provide proper path (/home/spir
 - Note that : Replication Factor > Number of Brokers: This will fail if the replication factor exceeds the number of brokers in your cluster.     Ensure replication-factor <= number of brokers.
 
 ```
-./kafka-topics.sh --create --topic test-topic --partitions 3 --replication-factor 2 --bootstrap-server kafka-broker-1:9094
+./kafka-topics.sh --create --topic test-topic --partitions 3 --replication-factor 3 --bootstrap-server kafka-broker-1:9094
 ```
 
 
@@ -35,15 +35,23 @@ In docker : mentioned volume path ( If using wsl provide proper path (/home/spir
 ```
 
 
-- To start consumer on a topic,
-
-```
-./kafka-console-consumer.sh --topic sample-topic --from-beginning --bootstrap-server broker:29092
-```
-
-
 - To produce the data in the topic,
 
 ```
-./kafka-console-producer.sh --topic sample-topic --bootstrap-server broker:29092
+./kafka-console-producer.sh --topic test-topic --bootstrap-server kafka-broker-1:9094
 ```
+
+
+- To start consumer on a topic from current time (latest flag),
+
+```
+./kafka-console-consumer.sh --topic test-topic --bootstrap-server kafka-broker-1:9094
+```
+
+
+- To start consumer on a topic from start time (earliest flag),
+
+```
+./kafka-console-consumer.sh --topic test-topic --from-beginning --bootstrap-server kafka-broker-1:9094
+```
+
